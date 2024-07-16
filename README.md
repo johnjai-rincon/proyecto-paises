@@ -1,1 +1,3 @@
-# john jairo rincon florez - 16 de julio - 15:00 p.m
+# john jairo rincon florez
+# Fecha16 de julio
+# hora: 3:00 p.m
