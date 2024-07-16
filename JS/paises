@@ -1,0 +1,35 @@
+document.addEventListener('DOMContentLoaded', function() {
+  const countriesList = document.getElementById('countriesList');
+
+  fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+      const first20Countries = data.slice(0, 20);
+      
+      first20Countries.forEach(country => {
+        const countryName = country.translations.spa?.common || country.name.common;
+        const capital = country.capital?.[0] || 'No disponible';
+        const flagUrl = country.flags.svg;
+        const mapsUrl = country.maps.googleMaps;
+
+        const countryElement = document.createElement('div');
+        countryElement.className = 'col-md-3 mb-4';
+        countryElement.innerHTML = `
+          <div class="card">
+            <img src="${flagUrl}" class="card-img-top" alt="Bandera de ${countryName}">
+            <div class="card-body">
+              <h5 class="card-title">${countryName}</h5>
+              <p class="card-text">Capital: ${capital}</p>
+              <a href="${mapsUrl}" target="_blank" class="btn btn-primary">Ver en Google Maps</a>
+            </div>
+          </div>
+        `;
+
+        countriesList.appendChild(countryElement);
+      });
+    })
+    .catch(error => {
+      console.error('Error al obtener los datos de los países:', error);
+      countriesList.innerHTML = '<p class="text-center">Error al cargar los datos de los países.</p>';
+    });
+});

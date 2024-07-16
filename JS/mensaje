@@ -1,0 +1,27 @@
+//DOM
+const formulario = document.getElementById('contactForm');
+const nombre = document.getElementById('nombre');
+const email = document.getElementById('email');
+const mensaje = document.getElementById('mensaje');
+const mensajeAgradecimiento = document.getElementById('mensajeAgradecimiento');
+
+// Manejar el evento "submit" del formulario
+formulario.addEventListener('submit', function(event) {
+  event.preventDefault();
+  enviarDatos();
+});
+
+// Enviar los datos del formulario
+function enviarDatos() {
+  console.log('Datos del formulario enviados:');
+  console.log('Nombre:', nombre.value);
+  console.log('Correo electrónico:', email.value);
+  console.log('Mensaje:', mensaje.value);
+  mostrarMensajeAgradecimiento();
+}
+
+// Función para mostrar el mensaje de agradecimiento
+function mostrarMensajeAgradecimiento() {
+  formulario.style.display = 'none';
+  mensajeAgradecimiento.style.display = 'block';
+}
