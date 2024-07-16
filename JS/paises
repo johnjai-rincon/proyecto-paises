@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
   fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => {
-      const last20Countries = data.slice(-20);
+      const first20Countries = data.slice(-20);
       
-      last20Countries.forEach(country => {
+      first20Countries.forEach(country => {
         const countryName = country.translations.spa?.common || country.name.common;
         const capital = country.capital?.[0] || 'No disponible';
         const flagUrl = country.flags.svg;
